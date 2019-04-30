@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @department.name %>
+</p>
+
+<p>
+  <strong>Records:</strong>
+  <%= pluralize(@department.records.count, 'Record') %>
+
+  <ul>
+    <% @department.records.each do |p| %>
+      <li><%= link_to p.name, record_path(p) %></li>
+    <% end %>
+  </ul>
+</p>
+
+<%= link_to 'Edit', edit_department_path(@department) %> |
+<%= link_to 'Back', departments_path %>

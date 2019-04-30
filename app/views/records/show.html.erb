@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @record.name %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @record.active %>
+</p>
+
+<p>
+  <strong>Department:</strong>
+  <%= @record.department.name %>
+</p>
+
+<%= link_to 'Edit', edit_record_path(@record) %> |
+<%= link_to 'Back', records_path %>
