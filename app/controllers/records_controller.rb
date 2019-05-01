@@ -1,8 +1,10 @@
+require 'will_paginate/array'
+
 class RecordsController < ApplicationController
   before_action :set_record, only: [:show, :edit, :update, :destroy]
 
   def index
-    @records = Record.all.paginate(page: params[:page], per_page: 5)
+    @records = Record.search(params[:name]).paginate(page: params[:page], per_page: 5)
   end
 
   def show
@@ -51,6 +53,10 @@ class RecordsController < ApplicationController
   end
 
   private
+
+  def filter_records
+    Record.select { |r| r.name.start_with?(params[:name]) }
+  end
 
   def set_record
     @record = Record.find(params[:id])
