@@ -1,5 +1,3 @@
-require 'will_paginate/array'
-
 class RecordsController < ApplicationController
   before_action :set_record, only: [:show, :edit, :update, :destroy]
 
@@ -53,10 +51,6 @@ class RecordsController < ApplicationController
   end
 
   private
-
-  def filter_records
-    Record.select { |r| r.name.start_with?(params[:name]) }
-  end
 
   def set_record
     @record = Record.find(params[:id])
